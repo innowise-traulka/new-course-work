@@ -1,0 +1,1 @@
+create type category_enum as enum ('SUITE', 'LUX', 'APARTMENT', 'JUNIOR_SUITE', 'STUDIO', 'STANDARD');
