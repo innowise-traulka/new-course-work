@@ -1,23 +1,23 @@
 databaseChangeLog:
   - include:
-      file: db.changelog/v1/001-initial-user-role-table.sql
+      file: db/changelog/v1/001-initial-user-role-table.sql
   - include:
-      file: db.changelog/v1/002-initial-user-status-enum.sql
+      file: db/changelog/v1/002-initial-user-status-enum.sql
   - include:
-      file: db.changelog/v1/003-initial-user-table.sql
+      file: db/changelog/v1/003-initial-user-table.sql
   - include:
-      file: db.changelog/v1/004-initial-passport-table.sql
+      file: db/changelog/v1/004-initial-passport-table.sql
   - include:
-      file: db.changelog/v1/005-initial-address-table.sql
+      file: db/changelog/v1/005-initial-hotel-table.sql
   - include:
-      file: db.changelog/v1/006-initial-hotel-table.sql
+      file: db/changelog/v1/006-initial-address-table.sql
   - include:
-      file: db.changelog/v1/007-initial-category-name-enum.sql
+      file: db/changelog/v1/007-initial-category-name-enum.sql
   - include:
-      file: db.changelog/v1/008-initial-room-category-table.sql
+      file: db/changelog/v1/008-initial-room-category-table.sql
   - include:
-      file: db.changelog/v1/009-initial-room-table.sql
+      file: db/changelog/v1/009-initial-room-table.sql
   - include:
-      file: db.changelog/v1/010-initial-reversation-status-enum.sql
+      file: db/changelog/v1/010-initial-reversation-status-enum.sql
   - include:
-      file: db.changelog/v1/011-initial-reservation-table.sql
+      file: db/changelog/v1/011-initial-reservation-table.sql
