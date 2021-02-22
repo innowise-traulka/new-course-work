@@ -1,5 +1,3 @@
-create type reservation_enum as enum ('CONFIRMED', 'CANCELED');
-
 create table reservation
 (
     id bigserial unique,
