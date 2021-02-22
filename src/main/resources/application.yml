@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:65432/course-work
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: true
+    change-log: classpath:/db.changelog/db.changelog-master.yml
+server.port: 8080
