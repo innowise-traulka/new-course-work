@@ -1,0 +1,1 @@
+alter table categories alter column hotel_id type bigint;

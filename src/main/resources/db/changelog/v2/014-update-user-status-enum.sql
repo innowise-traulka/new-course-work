@@ -1,0 +1,1 @@
+ALTER TYPE status_enum ADD VALUE 'NOT_CONFIRMED';

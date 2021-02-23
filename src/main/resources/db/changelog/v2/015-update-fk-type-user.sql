@@ -1,0 +1,1 @@
+alter table users alter column role_id type bigint;

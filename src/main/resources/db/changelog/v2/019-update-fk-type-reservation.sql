@@ -1,0 +1,1 @@
+alter table reservation alter column room_id type bigint;
