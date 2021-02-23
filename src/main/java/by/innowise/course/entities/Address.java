@@ -8,16 +8,17 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "address")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class Address implements Serializable {
     @Id
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @NotBlank
     @Size(min = 2, max = 50, message = "Country must be more than 2 and less that 51 symbols")
