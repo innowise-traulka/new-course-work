@@ -1,0 +1,1 @@
+alter table address alter column id type bigint;
