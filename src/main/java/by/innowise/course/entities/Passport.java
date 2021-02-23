@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -16,10 +17,10 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Passport {
+public class Passport implements Serializable {
     @Id
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Digits(integer = 7, fraction = 0, message = "House number must be less than 8 symbols")
     @Column(name = "number")

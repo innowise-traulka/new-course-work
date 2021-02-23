@@ -1,5 +1,5 @@
 package by.innowise.course.entities.types;
 
 public enum UserStatus {
-    ACTIVE, BLOCKED;
+    NOT_CONFIRMED, ACTIVE, BLOCKED;
 }
