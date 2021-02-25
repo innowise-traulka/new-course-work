@@ -1,0 +1,1 @@
+alter table roles add column name role_name_enum;

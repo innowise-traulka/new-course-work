@@ -1,0 +1,1 @@
+alter table hotel alter column address_id type bigint;

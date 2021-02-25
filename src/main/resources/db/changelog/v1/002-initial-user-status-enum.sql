@@ -1,0 +1,1 @@
+create type status_enum as enum ('ACTIVE', 'BLOCKED');

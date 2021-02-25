@@ -1,0 +1,1 @@
+alter table passport alter column id type bigint;
