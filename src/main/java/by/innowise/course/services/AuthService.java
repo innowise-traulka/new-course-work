@@ -4,7 +4,7 @@ import by.innowise.course.dto.entities.UserDto;
 import by.innowise.course.entities.User;
 import by.innowise.course.entities.types.UserStatus;
 import by.innowise.course.exception.ApiException;
-import by.innowise.course.facade.service.RegisterFacade;
+import by.innowise.course.facade.RegisterFacade;
 import by.innowise.course.mappers.UserMapper;
 import by.innowise.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
