@@ -1,4 +1,6 @@
 package by.innowise.course.services;
 
-public interface UserRoleService {
+import by.innowise.course.entities.UserRole;
+
+public interface UserRoleService extends BaseService<UserRole> {
 }

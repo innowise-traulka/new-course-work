@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   datasource:
     url: jdbc:postgresql://localhost:65432/course-work
@@ -12,4 +14,18 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yml
-server.port: 8080
+  mail:
+    host: smtp.googlemail.com
+    username: epam.project.traulko@gmail.com
+    password: project.traulko
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+app:
+  accountConfirmURL: http://localhost:8080/api/auth/confirm/
+  passwordResetURL: 1
