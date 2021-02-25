@@ -54,7 +54,7 @@ public class User implements Serializable {
     @Column(name = "status")
     private UserStatus userStatus;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private UserRole role;
 

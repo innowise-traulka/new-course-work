@@ -1,0 +1,1 @@
+create type role_name_enum as enum ('USER', 'ADMIN');

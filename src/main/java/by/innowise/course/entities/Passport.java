@@ -37,6 +37,6 @@ public class Passport implements Serializable {
     private User user;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "issuedAt")
+    @Column(name = "issued_at")
     private LocalDate issuedAt;
 }

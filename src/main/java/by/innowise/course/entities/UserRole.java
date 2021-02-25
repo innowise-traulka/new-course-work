@@ -1,13 +1,12 @@
 package by.innowise.course.entities;
 
+import by.innowise.course.entities.types.UserRoleName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -20,10 +19,7 @@ public class UserRole implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Size(min = 2, max = 50)
+    @Enumerated(EnumType.STRING)
     @Column(name = "name")
-    private String name;
-
-    @OneToMany(mappedBy = "role")
-    private Set<User> users;
+    private UserRoleName name;
 }

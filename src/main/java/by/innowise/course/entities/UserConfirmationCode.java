@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserConfirmationCode {
+public class UserConfirmationCode implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;
