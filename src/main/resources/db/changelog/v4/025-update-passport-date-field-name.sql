@@ -1,0 +1,1 @@
+alter table passport rename column issuedat to issued_at;
