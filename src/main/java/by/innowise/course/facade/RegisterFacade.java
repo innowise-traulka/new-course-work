@@ -13,9 +13,9 @@ import by.innowise.course.services.UserConfirmationCodeService;
 import by.innowise.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
-import javax.transaction.Transactional;
 
 @Component
 public class RegisterFacade {
