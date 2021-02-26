@@ -29,8 +29,6 @@ public class Hotel implements Serializable {
     @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Address address;
-
-    @OneToMany(mappedBy = "hotel")
-    private Set<Category> categories;
-
+//    @OneToMany(mappedBy = "hotel")
+//    private Set<Category> categories;
 }
