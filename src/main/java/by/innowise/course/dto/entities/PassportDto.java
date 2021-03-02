@@ -12,4 +12,5 @@ public class PassportDto {
     private String serial;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate issuedAt;
+    private UserDto user;
 }

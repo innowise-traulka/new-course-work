@@ -36,6 +36,6 @@ public class Category implements Serializable {
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-//    @OneToMany(mappedBy = "category")
-//    private Set<Room> rooms;
+    @OneToMany(mappedBy = "category")
+    private Set<Room> rooms;
 }
