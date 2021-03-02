@@ -3,6 +3,7 @@ package by.innowise.course.services.impl;
 import by.innowise.course.dto.entities.CategoryDto;
 import by.innowise.course.entities.Category;
 import by.innowise.course.facade.AddCategoryToHotelFacade;
+import by.innowise.course.mappers.CategoryMapper;
 import by.innowise.course.repositories.BaseRepository;
 import by.innowise.course.repositories.CategoryRepository;
 import by.innowise.course.services.CategoryService;
@@ -19,7 +20,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category save(Category category) {
-        return categoryRepository.save(category);
+    public CategoryDto save(CategoryDto categoryDto) {
+        Category category = CategoryMapper.INSTANCE.categoryDtoToCategory(categoryDto);
+        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.save(category));
     }
 }

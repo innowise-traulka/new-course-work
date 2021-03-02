@@ -1,5 +1,7 @@
-package by.innowise.course.exception;
+package by.innowise.course.controllers;
 
+import by.innowise.course.exception.ApiException;
+import by.innowise.course.exception.ApiExceptionEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
