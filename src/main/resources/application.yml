@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:65432/course-work
+    url: jdbc:postgresql://localhost:65432/course-work?stringtype=unspecified
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

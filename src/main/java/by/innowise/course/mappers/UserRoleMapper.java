@@ -5,7 +5,7 @@ import by.innowise.course.entities.UserRole;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserRoleMapper {
     UserRoleMapper INSTANCE = Mappers.getMapper(UserRoleMapper.class);
 
