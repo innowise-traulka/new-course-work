@@ -12,4 +12,5 @@ public class UserDto {
     private String email;
     private UserStatus userStatus;
     private UserRoleDto role;
+    private PassportDto passport;
 }
