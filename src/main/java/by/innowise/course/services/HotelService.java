@@ -6,4 +6,6 @@ import by.innowise.course.entities.Hotel;
 public interface HotelService extends BaseService<Hotel> {
 
     HotelDto save(HotelDto hotelDto);
+
+    HotelDto findById(Long id);
 }
