@@ -43,10 +43,10 @@ public class RegisterFacade {
             UserRole role = new UserRole();
             role.setName(UserRoleName.USER);
             user.setRole(role);
-            user = userService.save(user);
-            emailService.sendMessageForConfirmAccount(user.getEmail(), confirmationCode.getCode());
+            UserDto userDtoSaved = userService.save(UserMapper.INSTANCE.userToUserDto(user));
+            emailService.sendMessageForConfirmAccount(userDtoSaved.getEmail(), confirmationCode.getCode());
             // TODO: 24/02/2021 exception
-            return UserMapper.INSTANCE.userToUserDto(user);
+            return userDtoSaved;
         } catch (MessagingException e) {
             throw new ApiException("Send mail exception", e);
         }
