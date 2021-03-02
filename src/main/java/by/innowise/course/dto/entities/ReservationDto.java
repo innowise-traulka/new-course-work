@@ -16,4 +16,5 @@ public class ReservationDto {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate departureDate;
     private ReservationStatus status;
+    private Long roomId;
 }

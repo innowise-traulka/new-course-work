@@ -14,12 +14,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class HotelServiceImpl implements HotelService {
     private final BaseRepository<Hotel> hotelRepository;
-    private final CategoryService categoryService;
 
     @Autowired
-    public HotelServiceImpl(HotelRepository hotelRepository, CategoryService categoryService) {
+    public HotelServiceImpl(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
-        this.categoryService = categoryService;
     }
 
     @Override
