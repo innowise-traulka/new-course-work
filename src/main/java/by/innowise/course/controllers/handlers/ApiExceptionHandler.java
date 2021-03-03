@@ -1,4 +1,4 @@
-package by.innowise.course.controllers;
+package by.innowise.course.controllers.handlers;
 
 import by.innowise.course.exception.ApiException;
 import by.innowise.course.exception.ApiExceptionEntity;

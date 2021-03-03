@@ -21,8 +21,8 @@ public class Room implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Min(0)
-    @Max(10000)
+    @Min(value = 0, message = "Number must be more than 0")
+    @Max(value = 10000, message = "Number must be less than 10001")
     @Column(name = "number")
     private Integer number;
 

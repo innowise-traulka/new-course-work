@@ -24,29 +24,29 @@ public class User implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "First name must me not blank")
+    @Size(min = 2, max = 50, message = "First name size must be more than 2 and less than 50")
     @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "Last name must be not blank")
+    @Size(min = 2, max = 50, message = "First name size must be more than 2 and less than 50")
     @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "Patronymic must be not blank")
+    @Size(min = 2, max = 50, message = "First name size must be more than 2 and less than 50")
     @Column(name = "patronymic")
     private String patronymic;
 
-    @Email
-    @NotBlank
-    @Size(max = 100)
+    @Email(message = "Incorrect email")
+    @NotBlank(message = "Email must be not blank")
+    @Size(max = 100, message = "Email size must be less than 101 symbol")
     @Column(name = "email")
     private String email;
 
-    @NotBlank
-    @Size(min = 8)
+    @NotBlank(message = "Password must be not blank")
+    @Size(min = 8, message = "Password must be more than 8 symbols")
     @Column(name = "password")
     private String password;
 

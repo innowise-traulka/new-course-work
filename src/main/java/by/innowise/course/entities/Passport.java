@@ -26,7 +26,7 @@ public class Passport implements Serializable {
     @Column(name = "number")
     private Integer number;
 
-    @NotBlank
+    @NotBlank(message = "Serial must be not blank")
     @Size(max = 2, message = "Serial must be less than 3 symbols")
     @Column(name = "serial")
     private String serial;

@@ -21,7 +21,7 @@ public class Hotel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Name must be not blank")
     @Size(min = 2, max = 100, message = "Name must be more than 2 and less than 101 symbol")
     @Column(name = "name")
     private String name;
