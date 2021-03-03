@@ -40,6 +40,17 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Transactional
     @Override
+    public ReservationDto cancel(Long reservationId) {
+        // TODO: 03/03/2021 is correct time ?
+        // TODO: 03/03/2021 validator "is reservation contains this user?"
+        Reservation reservation = ReservationMapper.INSTANCE
+                .reservationDtoToReservation(findById(reservationId));
+        reservation.setStatus(ReservationStatus.CANCELED);
+        return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
+    }
+
+    @Transactional
+    @Override
     public ReservationDto add(Long hotelId, Long roomId, ReservationDto reservationDto) {
         // TODO: 02/03/2021 validator
         Reservation reservation = ReservationMapper.INSTANCE.reservationDtoToReservation(reservationDto);

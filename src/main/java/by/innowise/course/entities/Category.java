@@ -27,8 +27,8 @@ public class Category implements Serializable {
     @Column(name = "name")
     private CategoryName categoryName;
 
-    @DecimalMin("0.0")
-    @DecimalMax("1000000.0")
+    @DecimalMin(value = "0.0", message = "Price must be more than 0")
+    @DecimalMax(value = "1000000.0", message = "price must be less than 1000000")
     @Column(name = "price")
     private BigDecimal price;
 

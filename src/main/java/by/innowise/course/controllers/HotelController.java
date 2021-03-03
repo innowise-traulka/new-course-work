@@ -8,8 +8,12 @@ import by.innowise.course.services.CategoryService;
 import by.innowise.course.services.HotelService;
 import by.innowise.course.services.ReservationService;
 import by.innowise.course.services.RoomService;
+import by.innowise.course.validator.ValidationError;
+import by.innowise.course.validator.ValidationErrorBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,7 +36,7 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<HotelDto> addCategory(@RequestBody @Valid final HotelDto hotelDto) {
+    public ResponseEntity<HotelDto> addHotel(@Valid @RequestBody final HotelDto hotelDto) {
         return ResponseEntity.ok(hotelService.save(hotelDto));
     }
 
@@ -55,5 +59,4 @@ public class HotelController {
                                                          @PathVariable final Long roomId) {
         return ResponseEntity.ok(reservationService.add(id, roomId, reservationDto));
     }
-
 }

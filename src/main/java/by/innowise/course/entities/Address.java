@@ -20,17 +20,17 @@ public class Address implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Country must be not blank")
     @Size(min = 2, max = 50, message = "Country must be more than 2 and less that 51 symbols")
     @Column(name = "country")
     private String country;
 
-    @NotBlank
+    @NotBlank(message = "Town must be not blank")
     @Size(min = 2, max = 50, message = "Town must be more than 2 and less that 51 symbols")
     @Column(name = "town")
     private String town;
 
-    @NotBlank
+    @NotBlank(message = "Street must be not blank")
     @Size(min = 2, max = 50, message = "Street must be more than 2 and less that 51 symbols")
     @Column(name = "street")
     private String street;
