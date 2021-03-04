@@ -8,12 +8,8 @@ import by.innowise.course.services.CategoryService;
 import by.innowise.course.services.HotelService;
 import by.innowise.course.services.ReservationService;
 import by.innowise.course.services.RoomService;
-import by.innowise.course.validator.ValidationError;
-import by.innowise.course.validator.ValidationErrorBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

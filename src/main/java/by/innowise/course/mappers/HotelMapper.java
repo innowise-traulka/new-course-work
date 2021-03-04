@@ -10,9 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface HotelMapper {
     HotelMapper INSTANCE = Mappers.getMapper(HotelMapper.class);
 
-    @Mapping(target = "addressId", source = "hotel.address.id")
     HotelDto hotelToHotelDto(Hotel hotel);
 
-    @Mapping(target = "address.id", source = "hotelDto.addressId")
     Hotel hotelDtoToHotel(HotelDto hotelDto);
 }

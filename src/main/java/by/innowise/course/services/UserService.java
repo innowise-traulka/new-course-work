@@ -8,4 +8,8 @@ public interface UserService extends BaseService<UserDto> {
     UserDto save(UserDto userDto);
 
     UserDto findById(Long id);
+
+    UserDto block(Long id);
+
+    UserDto unblock(Long id);
 }

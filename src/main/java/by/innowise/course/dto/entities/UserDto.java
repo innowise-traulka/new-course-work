@@ -28,5 +28,4 @@ public class UserDto {
     private String password;
     private UserStatus userStatus;
     private UserRoleDto role;
-    private PassportDto passport;
 }

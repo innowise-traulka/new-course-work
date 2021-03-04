@@ -1,10 +1,7 @@
 package by.innowise.course.entities;
 
 import by.innowise.course.entities.types.UserStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -14,8 +11,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-@Data
-@Builder
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable {

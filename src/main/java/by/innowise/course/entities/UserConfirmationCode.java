@@ -1,9 +1,7 @@
 package by.innowise.course.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +10,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "user_confirmation_code")
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserConfirmationCode implements Serializable {

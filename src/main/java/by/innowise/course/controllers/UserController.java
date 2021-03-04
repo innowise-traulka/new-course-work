@@ -1,21 +1,26 @@
 package by.innowise.course.controllers;
 
 import by.innowise.course.dto.entities.PassportDto;
+import by.innowise.course.dto.entities.UserDto;
 import by.innowise.course.services.PassportService;
+import by.innowise.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
     private final PassportService passportService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(PassportService passportService) {
+    public UserController(PassportService passportService, UserService userService) {
         this.passportService = passportService;
+        this.userService = userService;
     }
 
     @PostMapping("/{id}/passport")
@@ -23,4 +28,19 @@ public class UserController {
                                                        @PathVariable final Long id) {
         return ResponseEntity.ok(passportService.addPassportToUser(id, passportDto));
     }
+
+    @PutMapping("/{id}/block")
+    public ResponseEntity<UserDto> block(@PathVariable final Long id) {
+        return ResponseEntity.ok(userService.block(id));
+    }
+
+    @PutMapping("/{id}/unblock")
+    public ResponseEntity<UserDto> unblock(@PathVariable final Long id) {
+        return ResponseEntity.ok(userService.unblock(id));
+    }
+
+//    @GetMapping
+//    public ResponseEntity<List<UserDto>> findAll() {
+//        return ResponseEntity.ok()
+//    }
 }
