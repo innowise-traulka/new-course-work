@@ -6,4 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface PassportService extends BaseService<PassportDto> {
     @Transactional
     PassportDto addPassportToUser(Long userId, PassportDto passportDto);
+
+    PassportDto findByUserId(Long id);
 }

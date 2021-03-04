@@ -10,6 +10,7 @@ import by.innowise.course.services.CategoryService;
 import by.innowise.course.services.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -20,6 +21,7 @@ public class HotelServiceImpl implements HotelService {
         this.hotelRepository = hotelRepository;
     }
 
+    @Transactional
     @Override
     public HotelDto save(HotelDto hotelDto) {
         Hotel hotel = HotelMapper.INSTANCE.hotelDtoToHotel(hotelDto);

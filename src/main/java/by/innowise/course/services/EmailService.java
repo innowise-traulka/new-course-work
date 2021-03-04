@@ -33,7 +33,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         helper.setFrom(setFromMail);
-        helper. setTo(email);
+        helper.setTo(email);
 
         String subject = "Here's the link to confirm your account";
         String content =

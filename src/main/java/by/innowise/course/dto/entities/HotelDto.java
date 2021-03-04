@@ -11,5 +11,5 @@ public class HotelDto {
     @NotBlank(message = "Name must be not blank")
     @Size(min = 2, max = 100, message = "Name must be more than 2 and less than 101 symbol")
     private String name;
-    private Long addressId;
+    private AddressDto address;
 }

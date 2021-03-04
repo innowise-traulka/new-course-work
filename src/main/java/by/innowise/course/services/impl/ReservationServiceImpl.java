@@ -1,17 +1,17 @@
 package by.innowise.course.services.impl;
 
+import by.innowise.course.config.Dispatcher;
 import by.innowise.course.dto.entities.ReservationDto;
-import by.innowise.course.dto.entities.RoomDto;
-import by.innowise.course.entities.Category;
 import by.innowise.course.entities.Reservation;
 import by.innowise.course.entities.Room;
 import by.innowise.course.entities.types.ReservationStatus;
 import by.innowise.course.exception.ApiException;
 import by.innowise.course.mappers.ReservationMapper;
-import by.innowise.course.mappers.RoomMapper;
 import by.innowise.course.repositories.BaseRepository;
 import by.innowise.course.repositories.ReservationRepository;
 import by.innowise.course.services.ReservationService;
+import by.innowise.course.validator.Validator;
+import by.innowise.course.validator.type.ValidatorType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,9 +20,11 @@ import java.time.LocalDate;
 @Service
 public class ReservationServiceImpl implements ReservationService {
     private final BaseRepository<Reservation> reservationRepository;
+    private final Dispatcher<ValidatorType, Validator> validatorDispatcher;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, Dispatcher<ValidatorType, Validator> validatorDispatcher) {
         this.reservationRepository = reservationRepository;
+        this.validatorDispatcher = validatorDispatcher;
     }
 
     @Override
@@ -41,10 +43,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Transactional
     @Override
     public ReservationDto cancel(Long reservationId) {
-        // TODO: 03/03/2021 is correct time ?
         // TODO: 03/03/2021 validator "is reservation contains this user?"
         Reservation reservation = ReservationMapper.INSTANCE
                 .reservationDtoToReservation(findById(reservationId));
+        validatorDispatcher.getByName(ValidatorType.CANCEL_RESERVATION_VALIDATOR).validate(reservation);
         reservation.setStatus(ReservationStatus.CANCELED);
         return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
     }
