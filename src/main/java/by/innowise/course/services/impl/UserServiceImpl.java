@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -52,9 +53,9 @@ public class UserServiceImpl implements UserService {
         return UserMapper.INSTANCE.userToUserDto(userRepository.save(user));
     }
 
-//    @Override
-//    public List<UserDto> findAll() {
-//        return userRepository.findAll().stream().;
-//        return UserMapper.INSTANCE.userToUserDto(userRepository.findAll());
-//    }
+    @Override
+    public List<UserDto> findAll() {
+        return userRepository.findAll().stream().map(UserMapper.INSTANCE::userToUserDto)
+                .collect(Collectors.toList());
+    }
 }

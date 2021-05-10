@@ -32,7 +32,18 @@ dependencies {
     implementation group: 'org.springframework.data', name: 'spring-data-redis', version: '2.4.5'
     implementation 'org.mapstruct:mapstruct:1.4.1.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
-    implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.4.4'
+
+    testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.15.2'
+    testImplementation group: 'org.testcontainers', name: 'junit-jupiter', version: '1.15.2'
+    testCompile "org.testcontainers:testcontainers:1.15.2"
+    testImplementation group: 'org.testcontainers', name: 'mockserver', version: '1.15.2'
+    implementation group: 'org.mock-server', name: 'mockserver-client-java', version: '5.11.2'
+    implementation group: 'org.testcontainers', name: 'jdbc', version: '1.15.2'
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.6'
+
+
 }
 
 test {

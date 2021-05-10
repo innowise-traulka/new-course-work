@@ -61,6 +61,7 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setRoom(room);
         reservation.setStatus(ReservationStatus.CONFIRMED);
         reservation.setApplicationDate(LocalDate.now());
+        validatorDispatcher.getByName(ValidatorType.ADD_RESERVATION_VALIDATOR).validate(reservation);
         return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
     }
 }

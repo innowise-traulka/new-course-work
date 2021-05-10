@@ -39,8 +39,13 @@ public class UserController {
         return ResponseEntity.ok(userService.unblock(id));
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<UserDto>> findAll() {
-//        return ResponseEntity.ok()
-//    }
+    @GetMapping
+    public ResponseEntity<List<UserDto>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> findById(@PathVariable final Long id) {
+        return ResponseEntity.ok(userService.findById(id));
+    }
 }
