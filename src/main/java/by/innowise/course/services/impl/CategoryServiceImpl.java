@@ -10,13 +10,17 @@ import by.innowise.course.repositories.BaseRepository;
 import by.innowise.course.repositories.CategoryRepository;
 import by.innowise.course.services.CategoryService;
 import by.innowise.course.services.HotelService;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-    private final BaseRepository<Category> categoryRepository;
+    private final CategoryRepository categoryRepository;
     private final HotelService hotelService;
 
     @Autowired
@@ -45,5 +49,12 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = CategoryMapper.INSTANCE.categoryDtoToCategory(categoryDto);
         category.setHotel(hotel);
         return save(CategoryMapper.INSTANCE.categoryToCategoryDto(category));
+    }
+
+    @Override
+    public List<CategoryDto> findCategoriesByHotelId(Long id) {
+        return categoryRepository.findCategoriesByHotelId(id).stream().map(CategoryMapper
+                .INSTANCE::categoryToCategoryDto)
+                .collect(Collectors.toList());
     }
 }

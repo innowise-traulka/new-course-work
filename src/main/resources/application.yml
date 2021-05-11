@@ -1,5 +1,7 @@
 server:
   port: 8080
+jwt:
+  secret: secret
 spring:
   datasource:
     url: jdbc:postgresql://localhost:65432/course-work?stringtype=unspecified

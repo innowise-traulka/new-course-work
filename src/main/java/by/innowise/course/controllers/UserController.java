@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "*")
 public class UserController {
     private final PassportService passportService;
     private final UserService userService;
@@ -47,5 +48,15 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable final Long id) {
         return ResponseEntity.ok(userService.findById(id));
+    }
+
+    @GetMapping("/token/{token}")
+    public ResponseEntity<UserDto> findByToken(@PathVariable final String token) {
+        return ResponseEntity.ok(userService.findByToken(token));
+    }
+
+    @PutMapping("/{id}/admin")
+    public ResponseEntity<UserDto> makeAdmin(@PathVariable final Long id) {
+        return ResponseEntity.ok(userService.makeAdmin(id));
     }
 }

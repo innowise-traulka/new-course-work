@@ -10,4 +10,6 @@ public interface UserRepository extends BaseRepository<User> {
     @Query("Select user from User user inner join user.userConfirmationCode confirmCode" +
             " on user.id=confirmCode.id where confirmCode.code = :code")
     Optional<User> findByConfirmationCode(@Param("code") String code);
+
+    Optional<User> findByEmail(String email);
 }

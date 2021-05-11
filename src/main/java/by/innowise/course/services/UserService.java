@@ -1,12 +1,12 @@
 package by.innowise.course.services;
 
-import by.innowise.course.dto.entities.PassportDto;
 import by.innowise.course.dto.entities.UserDto;
-import by.innowise.course.entities.User;
 
 import java.util.List;
 
-public interface UserService extends BaseService<UserDto> {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends BaseService<UserDto>, UserDetailsService {
     UserDto save(UserDto userDto);
 
     UserDto findById(Long id);
@@ -16,4 +16,8 @@ public interface UserService extends BaseService<UserDto> {
     UserDto unblock(Long id);
 
     List<UserDto> findAll();
+
+    UserDto findByToken(String token);
+
+    UserDto makeAdmin(Long id);
 }

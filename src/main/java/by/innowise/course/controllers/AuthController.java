@@ -1,5 +1,6 @@
 package by.innowise.course.controllers;
 
+import by.innowise.course.dto.entities.AuthDto;
 import by.innowise.course.dto.entities.UserDto;
 import by.innowise.course.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final AuthService authService;
@@ -27,5 +29,10 @@ public class AuthController {
     @GetMapping("/confirm/{code}")
     public ResponseEntity<UserDto> confirmRegister(@PathVariable final String code) {
         return ResponseEntity.ok(authService.confirm(code));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@Valid @RequestBody final AuthDto authDto) {
+        return ResponseEntity.ok(authService.login(authDto));
     }
 }

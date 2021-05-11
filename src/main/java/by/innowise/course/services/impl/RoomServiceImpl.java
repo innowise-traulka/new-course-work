@@ -10,6 +10,9 @@ import by.innowise.course.mappers.UserConfirmationCodeMapper;
 import by.innowise.course.repositories.BaseRepository;
 import by.innowise.course.repositories.RoomRepository;
 import by.innowise.course.services.RoomService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -13,6 +13,16 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - postgres-coursework-db
+  spring-boot-docker-container:
+    image: 'springboot-docker-container'
+    container_name: springboot-docker-container
+    ports:
+    - 8080:8080
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres-coursework-db
 volumes:
   postgres-data:
 
