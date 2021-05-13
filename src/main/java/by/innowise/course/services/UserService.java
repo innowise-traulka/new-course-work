@@ -21,5 +21,7 @@ public interface UserService extends BaseService<UserDto>, UserDetailsService {
 
     UserDto findByToken(String token);
 
-    UserDto makeAdmin(Long id);
+    UserDto updateToAdmin(Long id);
+
+    UserDto updateToUser(Long id);
 }

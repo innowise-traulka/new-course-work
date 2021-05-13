@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ReservationService extends BaseService<ReservationDto> {
     ReservationDto cancel(Long reservationId);
 
+    @Transactional
+    ReservationDto confirm(Long reservationId);
+
     List<ReservationDto> findAll();
 
     List<ReservationDto> findAllPaging(Integer page, Integer size, String sort);

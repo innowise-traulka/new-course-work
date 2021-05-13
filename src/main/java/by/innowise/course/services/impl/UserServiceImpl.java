@@ -105,11 +105,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto makeAdmin(Long id) {
+    public UserDto updateToAdmin(Long id) {
         UserDto userDto = findById(id);
         User user = UserMapper.INSTANCE.userDtoToUser(userDto);
         UserRole role = new UserRole();
         role.setName(UserRoleName.ADMIN);
+        user.setRole(role);
+        return UserMapper.INSTANCE.userToUserDto(userRepository.save(user));
+    }
+
+    @Override
+    public UserDto updateToUser(Long id) {
+        UserDto userDto = findById(id);
+        User user = UserMapper.INSTANCE.userDtoToUser(userDto);
+        UserRole role = new UserRole();
+        role.setName(UserRoleName.USER);
         user.setRole(role);
         return UserMapper.INSTANCE.userToUserDto(userRepository.save(user));
     }

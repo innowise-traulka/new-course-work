@@ -36,6 +36,11 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.findById(id));
     }
 
+    @PutMapping("/{id}/confirm")
+    public ResponseEntity<ReservationDto> confirm(@PathVariable final Long id) {
+        return ResponseEntity.ok(reservationService.cancel(id));
+    }
+
     @GetMapping
     public ResponseEntity<List<ReservationDto>> findAll(@RequestParam(required = false, defaultValue = "0") final Integer page,
                                                         @RequestParam(required = false, defaultValue = "5") final Integer size,

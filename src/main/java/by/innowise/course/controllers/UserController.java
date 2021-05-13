@@ -59,6 +59,6 @@ public class UserController {
 
     @PutMapping("/{id}/admin")
     public ResponseEntity<UserDto> makeAdmin(@PathVariable final Long id) {
-        return ResponseEntity.ok(userService.makeAdmin(id));
+        return ResponseEntity.ok(userService.updateToAdmin(id));
     }
 }

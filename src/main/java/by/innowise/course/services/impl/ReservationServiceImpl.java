@@ -58,6 +58,16 @@ public class ReservationServiceImpl implements ReservationService {
         return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
     }
 
+    @Transactional
+    @Override
+    public ReservationDto confirm(Long reservationId) {
+        Reservation reservation = ReservationMapper.INSTANCE
+                .reservationDtoToReservation(findById(reservationId));
+        validatorDispatcher.getByName(ValidatorType.CANCEL_RESERVATION_VALIDATOR).validate(reservation);
+        reservation.setStatus(ReservationStatus.CONFIRMED);
+        return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
+    }
+
     @Override
     public List<ReservationDto> findAll() {
         return reservationRepository.findAll().stream().map(ReservationMapper.INSTANCE::reservationToReservationDto)
@@ -67,7 +77,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<ReservationDto> findAllPaging(Integer page, Integer size, String sort) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
-        return reservationRepository.findAll().stream().map(ReservationMapper.INSTANCE::reservationToReservationDto)
+        return reservationRepository.findAll(pageable).stream().map(ReservationMapper.INSTANCE::reservationToReservationDto)
                 .collect(Collectors.toList());
     }
 
