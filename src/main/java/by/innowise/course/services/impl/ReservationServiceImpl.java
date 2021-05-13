@@ -7,15 +7,22 @@ import by.innowise.course.entities.Room;
 import by.innowise.course.entities.types.ReservationStatus;
 import by.innowise.course.exception.ApiException;
 import by.innowise.course.mappers.ReservationMapper;
+import by.innowise.course.mappers.UserMapper;
 import by.innowise.course.repositories.BaseRepository;
 import by.innowise.course.repositories.ReservationRepository;
 import by.innowise.course.services.ReservationService;
 import by.innowise.course.validator.Validator;
 import by.innowise.course.validator.type.ValidatorType;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -49,6 +56,19 @@ public class ReservationServiceImpl implements ReservationService {
         validatorDispatcher.getByName(ValidatorType.CANCEL_RESERVATION_VALIDATOR).validate(reservation);
         reservation.setStatus(ReservationStatus.CANCELED);
         return save(ReservationMapper.INSTANCE.reservationToReservationDto(reservation));
+    }
+
+    @Override
+    public List<ReservationDto> findAll() {
+        return reservationRepository.findAll().stream().map(ReservationMapper.INSTANCE::reservationToReservationDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationDto> findAllPaging(Integer page, Integer size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return reservationRepository.findAll().stream().map(ReservationMapper.INSTANCE::reservationToReservationDto)
+                .collect(Collectors.toList());
     }
 
     @Transactional

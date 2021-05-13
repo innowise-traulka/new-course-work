@@ -1,10 +1,12 @@
 package by.innowise.course.services.impl;
 
+import by.innowise.course.dto.entities.ReservationDto;
 import by.innowise.course.dto.entities.RoomDto;
 import by.innowise.course.entities.Category;
 import by.innowise.course.entities.Room;
 import by.innowise.course.entities.UserConfirmationCode;
 import by.innowise.course.exception.ApiException;
+import by.innowise.course.mappers.ReservationMapper;
 import by.innowise.course.mappers.RoomMapper;
 import by.innowise.course.mappers.UserConfirmationCodeMapper;
 import by.innowise.course.repositories.BaseRepository;
@@ -12,8 +14,12 @@ import by.innowise.course.repositories.RoomRepository;
 import by.innowise.course.services.RoomService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +36,19 @@ public class RoomServiceImpl implements RoomService {
     public RoomDto save(RoomDto roomDto) {
         Room room = RoomMapper.INSTANCE.roomDtoToRoom(roomDto);
         return RoomMapper.INSTANCE.roomToRoomDto(roomRepository.save(room));
+    }
+
+    @Override
+    public List<RoomDto> findAll() {
+        return roomRepository.findAll().stream().map(RoomMapper.INSTANCE::roomToRoomDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RoomDto> findAllPaging(Integer page, Integer size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return roomRepository.findAll(pageable).stream().map(RoomMapper.INSTANCE::roomToRoomDto)
+                .collect(Collectors.toList());
     }
 
     @Override

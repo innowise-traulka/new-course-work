@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +47,13 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public List<HotelDto> findAll() {
         return hotelRepository.findAll().stream().map(HotelMapper.INSTANCE::hotelToHotelDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<HotelDto> findAllPaging(Integer page, Integer size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return hotelRepository.findAll(pageable).stream().map(HotelMapper.INSTANCE::hotelToHotelDto)
                 .collect(Collectors.toList());
     }
 }

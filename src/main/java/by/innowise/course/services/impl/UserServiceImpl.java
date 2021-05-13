@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -73,6 +76,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAll() {
         return userRepository.findAll().stream().map(UserMapper.INSTANCE::userToUserDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDto> findAllPaging(Integer page, Integer size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return userRepository.findAll(pageable).stream().map(UserMapper.INSTANCE::userToUserDto)
                 .collect(Collectors.toList());
     }
 

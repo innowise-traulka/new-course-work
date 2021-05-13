@@ -17,6 +17,8 @@ public interface UserService extends BaseService<UserDto>, UserDetailsService {
 
     List<UserDto> findAll();
 
+    List<UserDto> findAllPaging(Integer page, Integer size, String sort);
+
     UserDto findByToken(String token);
 
     UserDto makeAdmin(Long id);

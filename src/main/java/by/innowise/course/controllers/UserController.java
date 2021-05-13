@@ -41,8 +41,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> findAll() {
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<List<UserDto>> findAll(@RequestParam(required = false, defaultValue = "0") final Integer page,
+                                                 @RequestParam(required = false, defaultValue = "5") final Integer size,
+                                                 @RequestParam(required = false, defaultValue = "id") final String sort) {
+        return ResponseEntity.ok(userService.findAllPaging(page, size, sort));
     }
 
     @GetMapping("/{id}")

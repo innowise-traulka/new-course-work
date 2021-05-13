@@ -48,7 +48,7 @@ class CourseApplicationTests {
     @Test
     public void isCorrectUsersDbSize() {
         List<User> userList = userRepository.findAll();
-        Assertions.assertEquals(userList.size(), 1);
+        Assertions.assertEquals(userList.size(), 0);
     }
 
 }

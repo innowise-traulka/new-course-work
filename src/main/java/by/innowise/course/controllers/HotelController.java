@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -70,8 +71,17 @@ public class HotelController {
     }
 
     @GetMapping
-    public ResponseEntity<List<HotelDto>> findAll() {
-        return ResponseEntity.ok(hotelService.findAll());
+    public ResponseEntity<List<HotelDto>> findAll(@RequestParam(required = false, defaultValue = "0") final Integer page,
+                                                  @RequestParam(required = false, defaultValue = "5") final Integer size,
+                                                  @RequestParam(required = false, defaultValue = "id") final String sort) {
+        return ResponseEntity.ok(hotelService.findAllPaging(page, size, sort));
+    }
+
+    @GetMapping("/reservations")
+    public ResponseEntity<List<ReservationDto>> findAllReservations(@RequestParam(required = false, defaultValue = "0") final Integer page,
+                                                  @RequestParam(required = false, defaultValue = "5") final Integer size,
+                                                  @RequestParam(required = false, defaultValue = "id") final String sort) {
+        return ResponseEntity.ok(reservationService.findAllPaging(page, size, sort));
     }
 
     @GetMapping("/{id}")

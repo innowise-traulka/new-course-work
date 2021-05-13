@@ -11,4 +11,6 @@ public interface HotelService extends BaseService<HotelDto> {
     HotelDto findById(Long id);
 
     List<HotelDto> findAll();
+
+    List<HotelDto> findAllPaging(Integer page, Integer size, String sort);
 }
